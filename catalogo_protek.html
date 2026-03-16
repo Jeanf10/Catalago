@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROTEK - Catálogo Completo 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(225, 29, 72, 0.3);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-contact {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .whatsapp-contact:hover {
+            background: white;
+            color: #e11d48;
+            transform: scale(1.05);
+        }
+
+        /* FILTROS */
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #e11d48;
+            color: #e11d48;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #e11d48;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            box-shadow: 0 10px 20px rgba(225, 29, 72, 0.3);
+        }
+
+        /* PRODUCTOS GRID */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(225, 29, 72, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: #e11d48;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+
+        .product-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1e293b;
+            min-height: 50px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-description {
+            font-size: 0.85em;
+            color: #64748b;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            min-height: 40px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .product-code {
+            font-size: 0.8em;
+            color: #94a3b8;
+            margin-bottom: 10px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .price-section {
+            margin-top: auto;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+
+        .price-label {
+            font-size: 0.75em;
+            color: #94a3b8;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .price-original {
+            font-size: 0.9em;
+            color: #cbd5e1;
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: #e11d48;
+            margin-bottom: 12px;
+        }
+
+        .btn-whatsapp {
+            display: block;
+            background: linear-gradient(135deg, #25d366 0%, #20ba58 100%);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* INFORMACION */
+        .info-banner {
+            background: white;
+            border-left: 5px solid #e11d48;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-banner h3 {
+            color: #e11d48;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-banner p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        footer h4 {
+            color: #e11d48;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .footer-contact {
+            background: #e11d48;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.3);
+        }
+
+        footer p {
+            color: #64748b;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 15px;
+            }
+
+            .filters {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                font-size: 0.85em;
+                padding: 8px 15px;
+            }
+        }
+
+        /* LOADER */
+        .no-products {
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            color: #64748b;
+            font-size: 1.1em;
+        }
+
+        /* SCROLL */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e11d48;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #be123c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header>
+            <h1>🏪 PROTEK</h1>
+            <p>Catálogo Completo de Productos 2024</p>
+            <a href="https://wa.me/+5492617010001?text=Hola!%20Me%20interesa%20consultar%20sobre%20productos%20PROTEK" class="whatsapp-contact">
+                💬 Contáctanos por WhatsApp
+            </a>
+        </header>
+
+        <!-- INFORMACIÓN IMPORTANTE -->
+        <div class="info-banner">
+            <h3>ℹ️ Información Importante</h3>
+            <p><strong>📱 WhatsApp:</strong> +54 9 261 7010001 - Consultas y Encargos</p>
+            <p><strong>💰 Precios:</strong> Incluyen aumento del 30% | <strong>📦 Envíos:</strong> Consultar disponibilidad</p>
+            <p><strong>✅ Promoción:</strong> Ofertas especiales por cantidad | <strong>🔔 Actualización:</strong> Catálogo actualizado a Marzo 2024</p>
+        </div>
+
+        <!-- FILTROS -->
+        <div class="filters">
+            <button class="filter-btn active" onclick="filtrarProductos('todos')">Todos los Productos</button>
+            <button class="filter-btn" onclick="filtrarProductos('BELLEZA')">Belleza</button>
+            <button class="filter-btn" onclick="filtrarProductos('HOGAR')">Hogar</button>
+            <button class="filter-btn" onclick="filtrarProductos('CARGADORES')">Cargadores</button>
+            <button class="filter-btn" onclick="filtrarProductos('AURICULARES BLUETOOTH')">Auriculares</button>
+            <button class="filter-btn" onclick="filtrarProductos('CABLES')">Cables</button>
+            <button class="filter-btn" onclick="filtrarProductos('FERRETERIA')">Ferretería</button>
+            <button class="filter-btn" onclick="filtrarProductos('LUCES Y LEDS')">Luces LED</button>
+            <button class="filter-btn" onclick="filtrarProductos('ELECTRODOMESTICOS')">Electrodomésticos</button>
+        </div>
+
+        <!-- GRID DE PRODUCTOS -->
+        <div class="products-grid" id="productosGrid">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <h4>¡Contáctanos para hacer tu pedido!</h4>
+        <a href="https://wa.me/+5492617010001?text=Hola!%20Me%20interesa%20realizar%20un%20pedido%20en%20PROTEK" class="footer-contact">
+            📱 WhatsApp: +54 9 261 7010001
+        </a>
+        <p>© 2024 PROTEK - Todos los derechos reservados</p>
+        <p>Catálogo digital - Precios sujetos a cambios sin previo aviso</p>
+    </footer>
+
+    <script>
+        // BASE DE DATOS DE PRODUCTOS CON PRECIOS AUMENTADOS 30%
+        const productos = [
+            {
+                id: 1,
+                nombre: "CORTA PELO DE COLORES DIGITAL TRANSPARENTE",
+                categoria: "BELLEZA",
+                precioOriginal: 8200,
+                imagen: "https://protek.com.ar/fotos/6901234567892.jpg",
+                descripcion: "Corta pelo digital con múltiples colores y diseño transparente moderno",
+                codigo: "6901234567892"
+            },
+            {
+                id: 2,
+                nombre: "HT -0065 TENDER ROPA VERTICAL",
+                categoria: "HOGAR",
+                precioOriginal: 21450,
+                imagen: "https://protek.com.ar/fotos/1000015454154151.jpg",
+                descripcion: "Tender de ropa vertical con estructura resistente y plegable",
+                codigo: "1000015454154151"
+            },
+            {
+                id: 3,
+                nombre: "CARGADOR DE AUTO PD 20W+ QC 3.0 CAR-53001",
+                categoria: "CARGADORES",
+                precioOriginal: 3900,
+                imagen: "https://protek.com.ar/fotos/98565.jpg",
+                descripcion: "Cargador rápido para auto con tecnología Power Delivery y Quick Charge",
+                codigo: "98565"
+            },
+            {
+                id: 4,
+                nombre: "VINCHA BT P47",
+                categoria: "AURICULARES BLUETOOTH",
+                precioOriginal: 4550,
+                imagen: "https://protek.com.ar/fotos/6989532512530.jpg",
+                descripcion: "Auriculares tipo vincha con conexión Bluetooth estable y batería duradera",
+                codigo: "6989532512530"
+            },
+            {
+                id: 5,
+                nombre: "AURICULAR AKG SAMSUNG",
+                categoria: "AURICULARES EARPHONE",
+                precioOriginal: 1850,
+                imagen: "https://protek.com.ar/fotos/6985451258115.jpg",
+                descripcion: "Auricular earphone AKG compatible con Samsung con excelente sonido",
+                codigo: "6985451258115"
+            },
+            {
+                id: 6,
+                nombre: "CARGADOR TIME USB TIPO C 18W",
+                categoria: "CARGADORES",
+                precioOriginal: 2530,
+                imagen: "https://protek.com.ar/fotos/1000011561564416.jpg",
+                descripcion: "Cargador rápido USB Tipo C con potencia de 18W",
+                codigo: "1000011561564416"
+            },
+            {
+                id: 7,
+                nombre: "CORTA PELO RECARGABLE METAL",
+                categoria: "BELLEZA",
+                precioOriginal: 4900,
+                imagen: "https://protek.com.ar/fotos/100009.jpg",
+                descripcion: "Cortapelo recargable con carcasa de metal de excelente resistencia",
+                codigo: "100009"
+            },
+            {
+                id: 8,
+                nombre: "FREIDORA DE AIRE CON HORNO ELECTRICO",
+                categoria: "ELECTRODOMESTICOS",
+                precioOriginal: 100000,
+                imagen: "https://protek.com.ar/fotos/100012.jpg",
+                descripcion: "Freidora de aire combinada con horno eléctrico de última generación",
+                codigo: "100012"
+            },
+            {
+                id: 9,
+                nombre: "SOPORTE DE TV FIJO DE 14 A 42 PULG - GENERICO",
+                categoria: "SOPORTES",
+                precioOriginal: 3120,
+                imagen: "https://protek.com.ar/fotos/10091.jpg",
+                descripcion: "Soporte universal para televisores de 14 a 42 pulgadas",
+                codigo: "10091"
+            },
+            {
+                id: 10,
+                nombre: "SET DE DUCHA DE MANO HQ-106 BA-106",
+                categoria: "HOGAR",
+                precioOriginal: 4480,
+                imagen: "https://protek.com.ar/fotos/10321541654854.jpg",
+                descripcion: "Set completo de ducha de mano con caño y accesorios",
+                codigo: "10321541654854"
+            },
+            {
+                id: 11,
+                nombre: "SET DE CEPILLO MOLDEADOR 5 EN 1 1200W NITSUK",
+                categoria: "BELLEZA",
+                precioOriginal: 22464,
+                imagen: "https://protek.com.ar/fotos/1000011231212315.jpg",
+                descripcion: "Set de cepillo moldeador con 5 funciones y potencia de 1200W",
+                codigo: "1000011231212315"
+            },
+            {
+                id: 12,
+                nombre: "CAB-44005 CABLE TIME TIPO C A TIPO C 1M 45W",
+                categoria: "CABLES",
+                precioOriginal: 1248,
+                imagen: "https://protek.com.ar/fotos/1000011222222000.jpg",
+                descripcion: "Cable USB Tipo C a Tipo C de 1 metro con carga de 45W",
+                codigo: "1000011222222000"
+            },
+            {
+                id: 13,
+                nombre: "LINGA PARA BICI/MOTO 15X90",
+                categoria: "FERRETERIA",
+                precioOriginal: 4550,
+                imagen: "https://protek.com.ar/fotos/234214.jpg",
+                descripcion: "Soga de seguridad para bicicleta y moto con medidas 15x90cm",
+                codigo: "234214"
+            },
+            {
+                id: 14,
+                nombre: "DUCHA CUADRADA 20X20 ACERO INOXIDABLE",
+                categoria: "FERRETERIA",
+                precioOriginal: 5350,
+                imagen: "https://protek.com.ar/fotos/6955898160203.jpg",
+                descripcion: "Ducha cuadrada de acero inoxidable con medidas 20x20cm",
+                codigo: "6955898160203"
+            },
+            {
+                id: 15,
+                nombre: "VINCHA BT P9 PRO MAX",
+                categoria: "AURICULARES BLUETOOTH",
+                precioOriginal: 5050,
+                imagen: "https://protek.com.ar/fotos/05643212.jpg",
+                descripcion: "Auricular vincha Bluetooth PRO MAX con conexión mejorada",
+                codigo: "05643212"
+            },
+            {
+                id: 16,
+                nombre: "LINTERNA MINERA RECARGABLE HIGH POWER",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 3100,
+                imagen: "https://protek.com.ar/fotos/6941343152008.jpg",
+                descripcion: "Linterna minera de alta potencia recargable por USB",
+                codigo: "6941343152008"
+            },
+            {
+                id: 17,
+                nombre: "SOPORTE DE TV 14-55 MOVIBLE",
+                categoria: "SOPORTES",
+                precioOriginal: 9360,
+                imagen: "https://protek.com.ar/fotos/05151651561.jpg",
+                descripcion: "Soporte articulado para TV de 14 a 55 pulgadas con movimiento",
+                codigo: "05151651561"
+            },
+            {
+                id: 18,
+                nombre: "AURICULAR BLUETOOH TIME ROSA Y NEGRO JS25",
+                categoria: "AURICULARES BLUETOOTH",
+                precioOriginal: 7950,
+                imagen: "https://protek.com.ar/fotos/05111616165151.jpg",
+                descripcion: "Auricular Bluetooth TIME bicolor rosa y negro con buena autonomía",
+                codigo: "05111616165151"
+            },
+            {
+                id: 19,
+                nombre: "LUZ DE EMERGENCIA 60LED",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 11100,
+                imagen: "https://protek.com.ar/fotos/554879512.jpg",
+                descripcion: "Luz de emergencia portátil con 60 LEDs de alta luminosidad",
+                codigo: "554879512"
+            },
+            {
+                id: 20,
+                nombre: "AHORQUE SALVAPERRO 3MM X 50CM",
+                categoria: "PET SHOP",
+                precioOriginal: 1152,
+                imagen: "https://protek.com.ar/fotos/6971755613682.jpg",
+                descripcion: "Ahorca o collar salvavidas para perro con medidas 3mm x 50cm",
+                codigo: "6971755613682"
+            },
+            {
+                id: 21,
+                nombre: "PEDALERA DE REHABILITACION FIJA",
+                categoria: "HOGAR",
+                precioOriginal: 35000,
+                imagen: "https://protek.com.ar/fotos/10000152255.jpg",
+                descripcion: "Pedalera de rehabilitación física con estructura fija y estable",
+                codigo: "10000152255"
+            },
+            {
+                id: 22,
+                nombre: "FOCO GIRATORIO SIMPLE",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 2497,
+                imagen: "https://protek.com.ar/fotos/723540565432.jpg",
+                descripcion: "Foco giratorio para iluminación con rotación de 360 grados",
+                codigo: "723540565432"
+            },
+            {
+                id: 23,
+                nombre: "RELOJ DESPERTADOR CHICO",
+                categoria: "HOGAR",
+                precioOriginal: 15000,
+                imagen: "https://protek.com.ar/fotos/99966.jpg",
+                descripcion: "Reloj despertador compacto con diseño moderno",
+                codigo: "99966"
+            },
+            {
+                id: 24,
+                nombre: "PIEDRA DEPILADORA MAGICA NATURAL",
+                categoria: "BELLEZA",
+                precioOriginal: 2138,
+                imagen: "https://protek.com.ar/fotos/043323.jpg",
+                descripcion: "Piedra depiladora natural mágica para depilación suave",
+                codigo: "043323"
+            },
+            {
+                id: 25,
+                nombre: "CANDADO 63MM ROCK",
+                categoria: "FERRETERIA",
+                precioOriginal: 4303,
+                imagen: "https://protek.com.ar/fotos/0546332131221.jpg",
+                descripcion: "Candado de seguridad marca ROCK con medida 63mm",
+                codigo: "0546332131221"
+            },
+            {
+                id: 26,
+                nombre: "CUBIERTERO PLASTICO 32 X 19 X 4CM",
+                categoria: "HOGAR",
+                precioOriginal: 2477,
+                imagen: "https://protek.com.ar/fotos/1000011233322121.jpg",
+                descripcion: "Organizador de cubiertos plástico con compartimientos",
+                codigo: "1000011233322121"
+            },
+            {
+                id: 27,
+                nombre: "CABINA PLEGABLE 36W",
+                categoria: "BELLEZA",
+                precioOriginal: 10032,
+                imagen: "https://protek.com.ar/fotos/100001999.jpg",
+                descripcion: "Cabina de UV plegable compacta con potencia 36W",
+                codigo: "100001999"
+            },
+            {
+                id: 28,
+                nombre: "LINTERNA 5109 BATERIA 6000 MAH 50% OFF",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 24990,
+                imagen: "https://protek.com.ar/fotos/100001421215555.jpg",
+                descripcion: "Linterna potente con batería de 6000mAh recargable",
+                codigo: "100001421215555"
+            },
+            {
+                id: 29,
+                nombre: "CINTA METRICA 10 METROS",
+                categoria: "FERRETERIA",
+                precioOriginal: 6125,
+                imagen: "https://protek.com.ar/fotos/12386.jpg",
+                descripcion: "Cinta métrica de acero de 10 metros con carcasa protectora",
+                codigo: "12386"
+            },
+            {
+                id: 30,
+                nombre: "CARPA AUTOMATICA 210X210X140CM 4 PERSONAS AT-242",
+                categoria: "HOGAR",
+                precioOriginal: 55000,
+                imagen: "https://protek.com.ar/fotos/1000014488222222.jpg",
+                descripcion: "Carpa automática para 4 personas con apertura rápida",
+                codigo: "1000014488222222"
+            },
+            {
+                id: 31,
+                nombre: "RECEPTOR BLUETOOTH CON FICHA PLUG A PLUG RBT2",
+                categoria: "ADAPTADORES",
+                precioOriginal: 2873,
+                imagen: "https://protek.com.ar/fotos/99019.jpg",
+                descripcion: "Receptor Bluetooth adapter con conexión aux plug a plug",
+                codigo: "99019"
+            },
+            {
+                id: 32,
+                nombre: "JOYSTICK PS3 SIN MARCA",
+                categoria: "COMPUTACION Y GAMER",
+                precioOriginal: 10880,
+                imagen: "https://protek.com.ar/fotos/10105.jpg",
+                descripcion: "Control Joystick inalámbrico compatible con PS3",
+                codigo: "10105"
+            },
+            {
+                id: 33,
+                nombre: "CANDADO BRONCE 63MM",
+                categoria: "FERRETERIA",
+                precioOriginal: 3121,
+                imagen: "https://protek.com.ar/fotos/6956245800384.jpg",
+                descripcion: "Candado de bronce color 63mm resistente a la corrosión",
+                codigo: "6956245800384"
+            },
+            {
+                id: 34,
+                nombre: "LINTERNA MINI RECARGABLE METAL 911A",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 2585,
+                imagen: "https://protek.com.ar/fotos/98591.jpg",
+                descripcion: "Linterna mini de metal recargable ultraportátil",
+                codigo: "98591"
+            },
+            {
+                id: 35,
+                nombre: "REPOSERA 52X51X71 SURTIDO",
+                categoria: "HOGAR",
+                precioOriginal: 14999,
+                imagen: "https://protek.com.ar/fotos/10000172793.jpg",
+                descripcion: "Reposera plegable con colores variados y estructura resistente",
+                codigo: "10000172793"
+            },
+            {
+                id: 36,
+                nombre: "BOLSA DE DORMIR 185X75CM",
+                categoria: "HOGAR",
+                precioOriginal: 16900,
+                imagen: "https://protek.com.ar/fotos/100001561164.jpg",
+                descripcion: "Bolsa de dormir térmica con dimensiones para clima templado",
+                codigo: "100001561164"
+            },
+            {
+                id: 37,
+                nombre: "CABLE HDMI 1.5MTS MALLADO",
+                categoria: "CABLES",
+                precioOriginal: 1733,
+                imagen: "https://protek.com.ar/fotos/98589.jpg",
+                descripcion: "Cable HDMI de 1.5 metros con malla protectora",
+                codigo: "98589"
+            },
+            {
+                id: 38,
+                nombre: "PUNTERO LASER A PILA - GENERICO",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 5744,
+                imagen: "https://protek.com.ar/fotos/6981571403206.jpg",
+                descripcion: "Puntero láser tipo presentador a pilas",
+                codigo: "6981571403206"
+            },
+            {
+                id: 39,
+                nombre: "BOLSA CHINA C/CIERRE40.5X44.5X9.5CM",
+                categoria: "HOGAR",
+                precioOriginal: 2323,
+                imagen: "https://protek.com.ar/fotos/1000015415415.jpg",
+                descripcion: "Bolsa organizadora china con cierre seguro",
+                codigo: "1000015415415"
+            },
+            {
+                id: 40,
+                nombre: "AURICULAR PARA MOTO BT11",
+                categoria: "AURICULARES BLUETOOTH",
+                precioOriginal: 16080,
+                imagen: "https://protek.com.ar/fotos/1000015552311.jpg",
+                descripcion: "Auricular Bluetooth específico para uso en motocicleta",
+                codigo: "1000015552311"
+            },
+            {
+                id: 41,
+                nombre: "PARLANTE 8\" CON MICROFONO BT-8102",
+                categoria: "PARLANTES Y MICROFONOS",
+                precioOriginal: 41184,
+                imagen: "https://protek.com.ar/fotos/100001526693333.jpg",
+                descripcion: "Parlante Bluetooth de 8 pulgadas con micrófono integrado",
+                codigo: "100001526693333"
+            },
+            {
+                id: 42,
+                nombre: "MOTO G35 128GB NUEVO",
+                categoria: "CELULARES NUEVOS",
+                precioOriginal: 246000,
+                imagen: "https://protek.com.ar/fotos/99664.jpg",
+                descripcion: "Smartphone Motorola G35 con 128GB almacenamiento nuevo",
+                codigo: "99664"
+            },
+            {
+                id: 43,
+                nombre: "COMEDERO DE ACERO P/MASCOTAS 15CM",
+                categoria: "PET SHOP",
+                precioOriginal: 3744,
+                imagen: "https://protek.com.ar/fotos/1000011556165.jpg",
+                descripcion: "Comedero de acero inoxidable para mascotas 15cm",
+                codigo: "1000011556165"
+            },
+            {
+                id: 44,
+                nombre: "GEGE BEAR LIP GLOSS CANDADO",
+                categoria: "BELLEZA",
+                precioOriginal: 2203,
+                imagen: "https://protek.com.ar/fotos/1000014466511122.jpg",
+                descripcion: "Lip gloss Gege Bear con aplicador tipo candado",
+                codigo: "1000014466511122"
+            },
+            {
+                id: 45,
+                nombre: "AUTO RADIO CONTROL",
+                categoria: "TODO PARA EL NIÑO",
+                precioOriginal: 1960,
+                imagen: "https://protek.com.ar/fotos/966333.jpg",
+                descripcion: "Auto de juguete a control remoto para niños",
+                codigo: "966333"
+            },
+            {
+                id: 46,
+                nombre: "PISTOLA LUZ Y SONIDO CHICA",
+                categoria: "TODO PARA EL NIÑO",
+                precioOriginal: 1217,
+                imagen: "https://protek.com.ar/fotos/9663666.jpg",
+                descripcion: "Pistola de juguete con luces y sonidos",
+                codigo: "9663666"
+            },
+            {
+                id: 47,
+                nombre: "SET DE UTENSILIOS DE COCINA DE SILICONA",
+                categoria: "HOGAR",
+                precioOriginal: 10666,
+                imagen: "https://protek.com.ar/fotos/100001545454545.jpg",
+                descripcion: "Set completo de utensilios de cocina de silicona resistente",
+                codigo: "100001545454545"
+            },
+            {
+                id: 48,
+                nombre: "Muñeca en bolsa",
+                categoria: "TODO PARA EL NIÑO",
+                precioOriginal: 584,
+                imagen: "https://protek.com.ar/fotos/10000172372e7e2.jpg",
+                descripcion: "Muñeca coleccionable empaquetada en bolsa original",
+                codigo: "10000172372e7e2"
+            },
+            {
+                id: 49,
+                nombre: "AUTO CARS EN BOLSA",
+                categoria: "TODO PARA EL NIÑO",
+                precioOriginal: 2635,
+                imagen: "https://protek.com.ar/fotos/10000185966.jpg",
+                descripcion: "Auto de la película CARS empaquetado en bolsa",
+                codigo: "10000185966"
+            },
+            {
+                id: 50,
+                nombre: "MUÑECO BAILARIN TUNG TUNG SAHUR",
+                categoria: "TODO PARA EL NIÑO",
+                precioOriginal: 5622,
+                imagen: "https://protek.com.ar/fotos/32654654156145.jpg",
+                descripcion: "Muñeco bailarín electrónico con luz y sonido",
+                codigo: "32654654156145"
+            },
+            {
+                id: 51,
+                nombre: "PLANCHITA DE PELO NOVA AV-2249",
+                categoria: "BELLEZA",
+                precioOriginal: 7062,
+                imagen: "https://protek.com.ar/fotos/10000142473583.jpg",
+                descripcion: "Plancha para cabello Nova con múltiples funciones",
+                codigo: "10000142473583"
+            },
+            {
+                id: 52,
+                nombre: "MINI LINTERNA RECARGABLE LLAVERO",
+                categoria: "LUCES Y LEDS",
+                precioOriginal: 2462,
+                imagen: "https://protek.com.ar/fotos/100001998877.jpg",
+                descripcion: "Linterna mini recargable para llevar en llavero",
+                codigo: "100001998877"
+            },
+            {
+                id: 53,
+                nombre: "DETECTOR SCANNER DE METAL MD-3003B1",
+                categoria: "OTROS",
+                precioOriginal: 14748,
+                imagen: "https://protek.com.ar/fotos/000003003201.jpg",
+                descripcion: "Detector de metales portátil profesional MD-3003B1",
+                codigo: "000003003201"
+            }
+        ];
+
+        // Función para calcular precio con aumento del 30%
+        function calcularPrecioNuevo(precioOriginal) {
+            return Math.round(precioOriginal * 1.3);
+        }
+
+        // Función para filtrar productos
+        function filtrarProductos(categoria) {
+            const grid = document.getElementById('productosGrid');
+            const botones = document.querySelectorAll('.filter-btn');
+            
+            // Actualizar botones activos
+            botones.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filtrar productos
+            let productosFiltrados = productos;
+            if (categoria !== 'todos') {
+                productosFiltrados = productos.filter(p => p.categoria === categoria);
+            }
+
+            // Limpiar grid
+            grid.innerHTML = '';
+
+            if (productosFiltrados.length === 0) {
+                grid.innerHTML = '<div class="no-products">No hay productos en esta categoría</div>';
+                return;
+            }
+
+            // Renderizar productos
+            productosFiltrados.forEach((producto, index) => {
+                const precioNuevo = calcularPrecioNuevo(producto.precioOriginal);
+                const enlaceWhatsApp = `https://wa.me/+5492617010001?text=Hola!%20Me%20interesa%20el%20producto:%20${encodeURIComponent(producto.nombre)}%20-%20Código:%20${producto.codigo}%20-%20Precio:%20$${precioNuevo}`;
+
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.style.animationDelay = `${index * 0.05}s`;
+
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${producto.imagen}" alt="${producto.nombre}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f1f5f9%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2214%22 fill=%22%23cbd5e1%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22%3EImagen no disponible%3C/text%3E%3C/svg%3E'">
+                    </div>
+                    <div class="product-content">
+                        <span class="product-category">${producto.categoria}</span>
+                        <h3 class="product-name">${producto.nombre}</h3>
+                        <p class="product-description">${producto.descripcion}</p>
+                        <p class="product-code">Código: ${producto.codigo}</p>
+                        <div class="price-section">
+                            <div class="price-label">Precio actualizado</div>
+                            <div class="price-original">Precio original: $${producto.precioOriginal.toLocaleString('es-AR')}</div>
+                            <div class="price">$${precioNuevo.toLocaleString('es-AR')}</div>
+                            <a href="${enlaceWhatsApp}" target="_blank" class="btn-whatsapp">
+                                💬 Consultar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // Cargar todos los productos al inicio
+        filtrarProductos('todos');
+    </script>
+</body>
+</html>
